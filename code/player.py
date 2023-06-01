@@ -1,25 +1,13 @@
 import pygame
-from projectile import Projectile
-from timer import Timer
+from ships import Ship
+
+# Player(gamedict, (200,200), 'blue', 1.2, 1)
 
 
-class Player(pygame.sprite.Sprite):
+class Player(Ship):
 
-    def __init__(self, gamedict, *groups) -> None:
-        super().__init__(*groups)
-
-        self.gamedict = gamedict
-
-        spawn_point = (200, 200)
-
-        self.direction = pygame.math.Vector2()
-        self.speed = 1.2
-
-        self.image = pygame.surface.Surface((10,20))
-        self.image.fill('blue')
-        self.rect = self.image.get_frect(center=spawn_point)
-
-        self.timer_shoot = Timer(2)
+    def __init__(self, gamedict, pos, color, speed, cooldown, *groups) -> None:
+        super().__init__(gamedict, pos, color, speed, cooldown, *groups)
 
         self.keys = {
             'up': pygame.K_UP,
@@ -54,12 +42,3 @@ class Player(pygame.sprite.Sprite):
         
         if keys[self.keys['shoot']]:
             self.shoot()
-
-    def move(self):
-        
-        self.rect.center = self.rect.center + self.direction * self.speed
-
-    def shoot(self):
-        
-        if self.timer_shoot.trigger():
-            Projectile(self.rect.center, -1, 2, self.gamedict['groups']['projectiles'])
