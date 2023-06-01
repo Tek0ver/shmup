@@ -31,9 +31,14 @@ class Game:
 
         self.gamedict['groups']['ennemies'].update()
 
-        self.gamedict['groups']['player'].draw(self.screen)
         self.gamedict['groups']['projectiles'].draw(self.screen)
         self.gamedict['groups']['ennemies'].draw(self.screen)
+        self.gamedict['groups']['player'].draw(self.screen)
+
+    def spawn_ennemy(self):
+
+        ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
+        self.gamedict['groups']['ennemies'].add(ennemy)
 
     def check_collisions(self):
 
@@ -48,3 +53,4 @@ class Game:
         for l in collided_dict.values():
             for ennemy in l:
                 ennemy.destroy()
+                self.spawn_ennemy()

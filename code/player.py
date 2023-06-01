@@ -7,6 +7,9 @@ class Player(Ship):
     def __init__(self, gamedict, pos, color, speed, cooldown, *groups) -> None:
         super().__init__(gamedict, pos, color, speed, cooldown, *groups)
 
+        self.image = pygame.image.load("../graphic/player/player.png").convert_alpha()
+        self.rect = self.image.get_frect(center=pos)
+
         self.keys = {
             'up': pygame.K_UP,
             'down': pygame.K_DOWN,
