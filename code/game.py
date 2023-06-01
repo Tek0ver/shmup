@@ -26,6 +26,9 @@ class Game:
 
         self.gamedict['groups']['player'].update()
         self.gamedict['groups']['projectiles'].update()
+
+        self.check_collisions()
+
         self.gamedict['groups']['ennemies'].update()
 
         self.gamedict['groups']['player'].draw(self.screen)
@@ -34,4 +37,14 @@ class Game:
 
     def check_collisions(self):
 
-        pass
+        group_projectiles = self.gamedict['groups']['projectiles']
+        group_ennemies = self.gamedict['groups']['ennemies']
+
+        collided_dict = pygame.sprite.groupcollide(group_projectiles, group_ennemies, False, False)
+
+        for projectile in collided_dict.keys():
+            projectile.destroy()
+
+        for l in collided_dict.values():
+            for ennemy in l:
+                ennemy.destroy()

@@ -40,3 +40,8 @@ class Ship(pygame.sprite.Sprite):
         self.direction.y = target.rect.y - self.rect.y
         if self.direction.magnitude != 0:
             self.direction.normalize_ip()
+
+    def destroy(self):
+
+        self.kill()
+        del(self)

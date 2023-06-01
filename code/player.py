@@ -1,8 +1,6 @@
 import pygame
 from ships import Ship
 
-# Player(gamedict, (200,200), 'blue', 1.2, 1)
-
 
 class Player(Ship):
 

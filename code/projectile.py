@@ -23,3 +23,8 @@ class Projectile(pygame.sprite.Sprite):
         if self.rect.bottom <= -10:
             self.kill()
             del(self)
+
+    def destroy(self):
+
+        self.kill()
+        del(self)
