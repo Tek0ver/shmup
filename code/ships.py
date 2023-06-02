@@ -2,6 +2,7 @@ from typing import Any
 import pygame
 from timer import Timer
 from projectile import Projectile
+from vfx import Explosion
 
 
 class Ship(pygame.sprite.Sprite):
@@ -43,5 +44,6 @@ class Ship(pygame.sprite.Sprite):
 
     def destroy(self):
 
+        Explosion(self.rect.center, self.gamedict['groups']['explosions'])
         self.kill()
         del(self)

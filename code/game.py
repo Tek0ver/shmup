@@ -12,7 +12,8 @@ class Game:
             'groups': {
                 'player': pygame.sprite.GroupSingle(),
                 'ennemies': pygame.sprite.GroupSingle(),
-                'projectiles': pygame.sprite.Group()
+                'projectiles': pygame.sprite.Group(),
+                'explosions': pygame.sprite.Group()
             }
         }
 
@@ -30,10 +31,12 @@ class Game:
         self.check_collisions()
 
         self.gamedict['groups']['ennemies'].update()
+        self.gamedict['groups']['explosions'].update()
 
         self.gamedict['groups']['projectiles'].draw(self.screen)
         self.gamedict['groups']['ennemies'].draw(self.screen)
         self.gamedict['groups']['player'].draw(self.screen)
+        self.gamedict['groups']['explosions'].draw(self.screen)
 
     def spawn_ennemy(self):
 
