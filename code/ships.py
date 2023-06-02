@@ -27,20 +27,20 @@ class Ship(pygame.sprite.Sprite):
         self.move()
 
     def move(self):
-        
+
+        if self.direction.magnitude() != 0:
+            self.direction.normalize_ip()
         self.rect.center = self.rect.center + self.direction * self.speed
 
     def shoot(self):
         
         if self.timer_shoot.trigger():
-            Projectile(self.rect.center, -1, 2, self.gamedict['groups']['projectiles'])
+            Projectile(self.rect.center, -1, 10, self.gamedict['groups']['projectiles'])
 
     def get_movement(self, target):
 
         self.direction.x = target.rect.x - self.rect.x
         self.direction.y = target.rect.y - self.rect.y
-        if self.direction.magnitude != 0:
-            self.direction.normalize_ip()
 
     def destroy(self):
 

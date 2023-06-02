@@ -2,6 +2,9 @@ import pygame
 from player import Player
 from ships import Ship
 from level import Level
+from hud import Hud
+from settings import *
+
 
 class Game:
 
@@ -19,8 +22,11 @@ class Game:
         }
 
         self.level = Level()
+        self.hud = Hud(self.screen)
 
-        player = Player(self.gamedict, (200,200), 'blue', 1.2, 1)
+        self.score = 0
+
+        player = Player(self.gamedict, (200,200), 'blue', 1.7, 1)
         self.gamedict['groups']['player'].add(player)
 
         ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
@@ -42,6 +48,8 @@ class Game:
         self.gamedict['groups']['player'].draw(self.screen)
         self.gamedict['groups']['explosions'].draw(self.screen)
 
+        self.hud.display_text((50,WINDOW_HEIGHT - 50), f"Score : {self.score}")
+
     def spawn_ennemy(self):
 
         ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
@@ -60,4 +68,5 @@ class Game:
         for l in collided_dict.values():
             for ennemy in l:
                 ennemy.destroy()
+                self.score += 10
                 self.spawn_ennemy()
