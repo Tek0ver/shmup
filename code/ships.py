@@ -39,8 +39,8 @@ class Ship(pygame.sprite.Sprite):
 
     def get_movement(self, target):
 
-        self.direction.x = target.rect.x - self.rect.x
-        self.direction.y = target.rect.y - self.rect.y
+        self.direction.x = target.rect.center[0] - self.rect.center[0]
+        self.direction.y = target.rect.center[1] - self.rect.center[1]        
 
     def destroy(self):
 
