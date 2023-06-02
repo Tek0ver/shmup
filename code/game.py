@@ -1,6 +1,7 @@
 import pygame
 from player import Player
 from ships import Ship
+from level import Level
 
 class Game:
 
@@ -16,6 +17,8 @@ class Game:
                 'explosions': pygame.sprite.Group()
             }
         }
+
+        self.level = Level()
 
         player = Player(self.gamedict, (200,200), 'blue', 1.2, 1)
         self.gamedict['groups']['player'].add(player)
@@ -33,6 +36,7 @@ class Game:
         self.gamedict['groups']['ennemies'].update()
         self.gamedict['groups']['explosions'].update()
 
+        self.level.display_background(self.screen)
         self.gamedict['groups']['projectiles'].draw(self.screen)
         self.gamedict['groups']['ennemies'].draw(self.screen)
         self.gamedict['groups']['player'].draw(self.screen)

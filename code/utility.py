@@ -24,6 +24,4 @@ def cut_spritesheet(path, sprite_dim, alpha_key='auto'):
         for i in range(int(width/sprite_dim[0])):
             sprites.append(spritesheet.subsurface(i*sprite_dim[0], j*sprite_dim[1], sprite_dim[0], sprite_dim[1]))
 
-    print(len(sprites))
-
     return sprites
