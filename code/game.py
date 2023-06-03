@@ -4,6 +4,7 @@ from ships import Ship
 from level import Level
 from hud import Hud
 from settings import *
+from mixer import Mixer
 
 
 class Game:
@@ -23,6 +24,8 @@ class Game:
 
         self.level = Level()
         self.hud = Hud(self.screen)
+        self.mixer = Mixer()
+        self.gamedict['mixer'] = self.mixer
 
         self.score = 0
 

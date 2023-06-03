@@ -20,6 +20,9 @@ class Ship(pygame.sprite.Sprite):
         self.speed = speed
 
         self.timer_shoot = Timer(cooldown)
+        
+        gamedict['mixer'].load_sound('shoot', '../audio/weapon/laser1.wav')
+        gamedict['mixer'].load_sound('dead', '../audio/explosion/explosion.wav')
     
     def update(self) -> None:
         
@@ -35,6 +38,7 @@ class Ship(pygame.sprite.Sprite):
     def shoot(self):
         
         if self.timer_shoot.trigger():
+            self.gamedict['mixer'].play_sound('shoot')
             Projectile(self.rect.center, -1, 10, self.gamedict['groups']['projectiles'])
 
     def get_movement(self, target):
@@ -45,5 +49,6 @@ class Ship(pygame.sprite.Sprite):
     def destroy(self):
 
         Explosion(self.rect.center, self.gamedict['groups']['explosions'])
+        self.gamedict['mixer'].play_sound('dead')
         self.kill()
         del(self)
