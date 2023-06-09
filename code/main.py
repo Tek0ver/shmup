@@ -8,7 +8,16 @@ pygame.init()
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
-game = Game()
+gamedict = {
+            'groups': {
+                'player': pygame.sprite.GroupSingle(),
+                'ennemies': pygame.sprite.GroupSingle(),
+                'projectiles': pygame.sprite.Group(),
+                'explosions': pygame.sprite.Group()
+            }
+        }
+
+game = Game(gamedict)
 
 while True:
 
@@ -17,6 +26,9 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_m:
+                gamedict['mixer'].toggle_music()  
 
     screen.fill('grey')
     game.run(clock)

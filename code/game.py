@@ -9,23 +9,20 @@ from mixer import Mixer
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, gamedict):
         
         self.screen = pygame.display.get_surface()
 
-        self.gamedict = {
-            'groups': {
-                'player': pygame.sprite.GroupSingle(),
-                'ennemies': pygame.sprite.GroupSingle(),
-                'projectiles': pygame.sprite.Group(),
-                'explosions': pygame.sprite.Group()
-            }
-        }
+        self.gamedict = gamedict
 
         self.level = Level()
         self.hud = Hud(self.screen)
         self.mixer = Mixer()
         self.gamedict['mixer'] = self.mixer
+
+        self.mixer.load_music('main_00', '../audio/music/Juhani Junkala [Retro Game Music Pack] Level 1.wav')
+        self.mixer.switch_music('main_00')
+        self.mixer.toggle_music()
 
         self.score = 0
 
@@ -35,7 +32,7 @@ class Game:
         ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
         self.gamedict['groups']['ennemies'].add(ennemy)
 
-    def run(self, clock):
+    def run(self, clock):        
 
         self.gamedict['groups']['player'].update()
         self.gamedict['groups']['projectiles'].update()
