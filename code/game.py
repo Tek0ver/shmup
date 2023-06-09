@@ -29,13 +29,13 @@ class Game:
 
         self.score = 0
 
-        player = Player(self.gamedict, (200,200), 'blue', 1.7, 1)
+        player = Player(self.gamedict, (200,200), 'blue', 3, 1)
         self.gamedict['groups']['player'].add(player)
 
         ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
         self.gamedict['groups']['ennemies'].add(ennemy)
 
-    def run(self):
+    def run(self, clock):
 
         self.gamedict['groups']['player'].update()
         self.gamedict['groups']['projectiles'].update()
@@ -52,6 +52,7 @@ class Game:
         self.gamedict['groups']['explosions'].draw(self.screen)
 
         self.hud.display_text((50,WINDOW_HEIGHT - 50), f"Score : {self.score}")
+        self.hud.display_fps(clock)
 
     def spawn_ennemy(self):
 

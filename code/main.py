@@ -19,7 +19,7 @@ while True:
             exit()
 
     screen.fill('grey')
-    game.run()
+    game.run(clock)
     pygame.display.update()
 
     clock.tick(FPS)

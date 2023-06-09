@@ -12,3 +12,7 @@ class Hud:
 
         text_surf = self.font.render(text, True, 'white')
         self.screen.blit(text_surf, pos)
+
+    def display_fps(self, clock: pygame.time.Clock):
+
+        self.display_text((0,0), str(round(clock.get_fps())))
