@@ -36,3 +36,22 @@ class Mixer:
     def switch_music(self, music: str):
         
         self.active_music = music
+
+    def change_music_volume(self, volume: str) -> float:
+
+        step = 0.1
+
+        if volume == 'up':
+            actual_volume = pygame.mixer.music.get_volume() + step
+            if actual_volume > 1:
+                actual_volume = 1
+        elif volume == 'down':
+            actual_volume = pygame.mixer.music.get_volume() - step
+            if actual_volume < 0:
+                actual_volume = 0
+        
+        pygame.mixer.music.set_volume(actual_volume)
+
+        print(f"Volume set to {actual_volume}.")
+
+        return actual_volume

@@ -28,7 +28,11 @@ while True:
             exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_m:
-                gamedict['mixer'].toggle_music()  
+                gamedict['mixer'].toggle_music()
+            elif event.key == pygame.K_k:
+                gamedict['mixer'].change_music_volume('down')
+            elif event.key == pygame.K_l:
+                gamedict['mixer'].change_music_volume('up')
 
     screen.fill('grey')
     game.run(clock)
