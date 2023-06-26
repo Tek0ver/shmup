@@ -1,4 +1,3 @@
-from typing import Any
 import pygame
 from timer import Timer
 from projectile import Projectile
