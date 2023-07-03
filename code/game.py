@@ -5,6 +5,7 @@ from level import Level
 from hud import Hud
 from settings import *
 from mixer import Mixer
+from random import randint
 
 
 class Game:
@@ -52,8 +53,10 @@ class Game:
         self.hud.display_fps(clock)
 
     def spawn_ennemy(self):
+        
+        pos = (randint(0,WINDOW_WIDTH), 50)
 
-        ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
+        ennemy = Ship(self.gamedict, pos, 'red', 1, 2)
         self.gamedict['groups']['ennemies'].add(ennemy)
 
     def check_collisions(self):

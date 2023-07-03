@@ -82,4 +82,4 @@ class Player(Ship):
             self.direction.x = 0
         
         if keys[self.keys['shoot']]:
-            self.shoot()
+            self.shoot(-1)

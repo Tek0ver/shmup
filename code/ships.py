@@ -34,11 +34,11 @@ class Ship(pygame.sprite.Sprite):
             self.direction.normalize_ip()
         self.rect.center = self.rect.center + self.direction * self.speed
 
-    def shoot(self):
+    def shoot(self, dir=1):
         
         if self.timer_shoot.trigger():
             self.gamedict['mixer'].play_sound('shoot')
-            Projectile(self.rect.center, -1, 10, self.gamedict['groups']['projectiles'])
+            Projectile(self.rect.center, dir * 1, 10, self.gamedict['groups']['projectiles'])
 
     def get_movement(self, target):
 
