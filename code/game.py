@@ -6,6 +6,7 @@ from hud import Hud
 from settings import *
 from mixer import Mixer
 from random import randint
+from mine import Mine
 
 
 class Game:
@@ -30,7 +31,10 @@ class Game:
         player = Player(self.gamedict, (200,200), 'blue', 3, 1)
         self.gamedict['groups']['player'].add(player)
 
-        ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
+        # ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
+        # self.gamedict['groups']['ennemies'].add(ennemy)
+
+        ennemy = Mine((50,50))
         self.gamedict['groups']['ennemies'].add(ennemy)
 
     def run(self, clock):        
