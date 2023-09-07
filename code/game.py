@@ -60,7 +60,8 @@ class Game:
         
         pos = (randint(0,WINDOW_WIDTH), 50)
 
-        ennemy = Ship(self.gamedict, pos, 'red', 1, 2)
+        # ennemy = Ship(self.gamedict, pos, 'red', 1, 2)
+        ennemy = Mine(pos)
         self.gamedict['groups']['ennemies'].add(ennemy)
 
     def check_collisions(self):

@@ -1,11 +1,13 @@
 import pygame
-from coreSprite import CoreSprite
+from coreSprite import CoreSprite, Destroyable
+from ai import AI_0
 
 
-class Mine(CoreSprite):
+class Mine(CoreSprite, Destroyable, AI_0):
 
     def __init__(self, pos):
         super().__init__()
+        AI_0.__init__(self)
 
         super().load_cache_images("../graphic/mine00")
 
@@ -18,6 +20,8 @@ class Mine(CoreSprite):
     def update(self):
 
         self.animate()
+        self.get_movement(self.gamedict['groups']['player'].sprite)
+        self.move()
 
     def animate(self):
 

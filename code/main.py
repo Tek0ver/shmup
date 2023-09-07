@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from sys import exit
 from game import Game
+from coreSprite import CoreSprite
 
 pygame.init()
 
@@ -16,6 +17,8 @@ gamedict = {
                 'explosions': pygame.sprite.Group()
             }
         }
+
+CoreSprite.init(gamedict)
 
 game = Game(gamedict)
 

@@ -1,6 +1,7 @@
 import pygame
 from os import walk
 from os.path import join
+from vfx import Explosion
 
 
 class CoreSprite(pygame.sprite.Sprite):
@@ -21,3 +22,18 @@ class CoreSprite(pygame.sprite.Sprite):
                 animation = path.split("/")[-1]
                 images.append(pygame.image.load(join(path, file)).convert_alpha())
             cls.images[animation] = images
+    
+    @classmethod
+    def init(cls, gamedict):
+        
+        cls.gamedict = gamedict
+
+
+class Destroyable(pygame.sprite.Sprite):
+
+    def destroy(self):
+
+        Explosion(self.rect.center, self.gamedict['groups']['explosions'])
+        self.gamedict['mixer'].play_sound('dead')
+        self.kill()
+        del(self)
