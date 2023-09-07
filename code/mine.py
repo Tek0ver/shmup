@@ -6,10 +6,8 @@ from ai import AI_0
 class Mine(CoreSprite, Destroyable, AI_0):
 
     def __init__(self, pos):
-        super().__init__()
+        CoreSprite.__init__(self)
         AI_0.__init__(self)
-
-        super().load_cache_images("../graphic/mine00")
 
         self.frame_index = 0
         self.animation_speed = 0.3

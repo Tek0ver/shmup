@@ -7,6 +7,7 @@ from settings import *
 from mixer import Mixer
 from random import randint
 from mine import Mine
+from vfx import Explosion
 
 
 class Game:
@@ -34,8 +35,11 @@ class Game:
         # ennemy = Ship(self.gamedict, (50,50), 'red', 0.1, 2)
         # self.gamedict['groups']['ennemies'].add(ennemy)
 
+        Mine.load_cache_images("../graphic/mine00")
         ennemy = Mine((50,50))
         self.gamedict['groups']['ennemies'].add(ennemy)
+
+        Explosion.load_cache_images()
 
     def run(self, clock):        
 
