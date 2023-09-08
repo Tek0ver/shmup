@@ -1,14 +1,26 @@
 import pygame
 from settings import *
+from player import Player
+from mixer import Mixer
 
 
 class Level:
 
-    def __init__(self):
+    def __init__(self, modules):
 
-        self.background = pygame.image.load("../graphic/terrain/sea01.jpg").convert()
-        self.background = pygame.transform.smoothscale(self.background, (WINDOW_WIDTH, WINDOW_HEIGHT))
+        self.group_player = pygame.sprite.GroupSingle()
+        self.group_ennemies = pygame.sprite.Group()
 
-    def display_background(self, screen: pygame.surface.Surface):
+        self.config = {
+            'lenght': 1000,
+        }
 
-        screen.blit(self.background, (0,0))
+        print(modules['mixer'].sounds)
+
+    def run(self):
+
+        pass
+
+    def draw(self):
+
+        pass
