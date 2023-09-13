@@ -1,5 +1,6 @@
 import pygame
 
+
 class Mixer:
 
     def __init__(self):
@@ -18,20 +19,20 @@ class Mixer:
         self.musics[name] = pygame.mixer.music.load(path)
 
     def play_sound(self, name):
+
         self.sounds[name].play()
 
     def toggle_music(self):
                 
-        if self.music_state is 'off':
+        if self.music_state == 'off':
             pygame.mixer.music.play(-1)
             self.music_state = 'playing'
-        elif self.music_state is 'playing':
+        elif self.music_state == 'playing':
             pygame.mixer.music.pause()
             self.music_state = 'paused'
-        elif self.music_state is 'paused':
+        elif self.music_state == 'paused':
             pygame.mixer.music.unpause()
             self.music_state = 'playing'
-
 
     def switch_music(self, music: str):
         
@@ -55,3 +56,5 @@ class Mixer:
         print(f"Volume set to {actual_volume}.")
 
         return actual_volume
+    
+mixer = Mixer()

@@ -5,8 +5,8 @@ from utility import *
 
 class Player(Ship):
 
-    def __init__(self, gamedict, pos, color, speed, cooldown, *groups) -> None:
-        super().__init__(gamedict, pos, color, speed, cooldown, *groups)
+    def __init__(self, all_groups, pos, color, speed, cooldown, *groups) -> None:
+        super().__init__(all_groups, pos, color, speed, cooldown, *groups)
 
         self.frames = load_image_folder('../graphic/ship00')['ship00']
         self.idle_frame = len(self.frames) / 2

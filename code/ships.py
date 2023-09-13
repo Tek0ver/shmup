@@ -2,14 +2,15 @@ import pygame
 from timer import Timer
 from projectile import Projectile
 from vfx import Explosion
+from mixer import mixer
 
 
 class Ship(pygame.sprite.Sprite):
 
-    def __init__(self, gamedict, pos, color, speed, cooldown, *groups) -> None:
+    def __init__(self, all_groups, pos, color, speed, cooldown, *groups) -> None:
         super().__init__(*groups)
 
-        self.gamedict = gamedict
+        self.all_groups = all_groups
 
         self.image = pygame.surface.Surface((50,50))
         self.image.fill(color)
@@ -20,12 +21,12 @@ class Ship(pygame.sprite.Sprite):
 
         self.timer_shoot = Timer(cooldown)
         
-        gamedict['mixer'].load_sound('shoot', '../audio/weapon/laser1.wav')
-        gamedict['mixer'].load_sound('dead', '../audio/explosion/explosion.wav')
+        mixer.load_sound('shoot', '../audio/weapon/laser1.wav')
+        mixer.load_sound('dead', '../audio/explosion/explosion.wav')
     
     def update(self) -> None:
         
-        self.get_movement(self.gamedict['groups']['player'].sprite)
+        self.get_movement(self.all_groups['player'].sprite)
         self.move()
 
     def move(self):
@@ -37,8 +38,8 @@ class Ship(pygame.sprite.Sprite):
     def shoot(self, dir=1):
         
         if self.timer_shoot.trigger():
-            self.gamedict['mixer'].play_sound('shoot')
-            Projectile(self.rect.center, dir * 1, 10, self.gamedict['groups']['projectiles'])
+            mixer.play_sound('shoot')
+            Projectile(self.rect.center, dir * 1, 10, self.all_groups['projectiles'])
 
     def get_movement(self, target):
 
@@ -47,7 +48,7 @@ class Ship(pygame.sprite.Sprite):
 
     def destroy(self):
 
-        Explosion(self.rect.center, self.gamedict['groups']['explosions'])
-        self.gamedict['mixer'].play_sound('dead')
+        Explosion(self.rect.center, self.all_groups['explosions'])
+        mixer.play_sound('dead')
         self.kill()
         del(self)
