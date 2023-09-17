@@ -2,6 +2,8 @@ import pygame
 from settings import *
 from player import Player
 from mixer import mixer
+from mine import Mine
+from ui import ui
 
 
 class Level:
@@ -21,11 +23,17 @@ class Level:
             },
         }
 
+        self.load_ennemies()
+
         self.load_audio()
 
         mixer.toggle_music()
 
         self.spawn_player((50,50))
+
+    def load_ennemies(self):
+
+        Mine.load_cache_images('../graphic/mine00')
 
     def load_audio(self):
         
@@ -36,11 +44,17 @@ class Level:
 
         Player(self.groups, (50,50), 'blue', 3, 0.2, self.groups['player'])
 
+    def spawn_ennemy(self, pos, type=0):
+
+        self.groups['ennemies'].add(Mine(pos))
+
     def run(self):
 
         self.groups['player'].update()
-        self.draw()
+        self.groups['ennemies'].update(self.groups['player'].sprite)
 
     def draw(self):
 
         self.groups['player'].draw(pygame.display.get_surface())
+        self.groups['ennemies'].draw(pygame.display.get_surface())
+        ui.draw()

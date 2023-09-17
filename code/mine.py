@@ -15,10 +15,10 @@ class Mine(CoreSprite, Destroyable, AI_0):
         self.image = self.images['mine00'][self.frame_index]
         self.rect = self.image.get_frect(center=pos)
 
-    def update(self):
+    def update(self, player):
 
         self.animate()
-        self.get_movement(self.gamedict['groups']['player'].sprite)
+        self.get_movement(player)
         self.move()
 
     def animate(self):

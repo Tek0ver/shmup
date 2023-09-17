@@ -18,9 +18,20 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_m:
+                mixer.toggle_music()
+            elif event.key == pygame.K_k:
+                mixer.change_music_volume('down')
+            elif event.key == pygame.K_l:
+                mixer.change_music_volume('up')
+
+            elif event.key == pygame.K_a:
+                level.spawn_ennemy((250,250), 0)
 
     screen.fill('grey')
     level.run()
-    pygame.display.update()
+    level.draw()
+    pygame.display.flip()
 
     clock.tick(FPS)

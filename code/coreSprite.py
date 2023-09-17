@@ -22,11 +22,6 @@ class CoreSprite(pygame.sprite.Sprite):
                 animation = path.split("/")[-1]
                 images.append(pygame.image.load(join(path, file)).convert_alpha())
             cls.images[animation] = images
-    
-    @classmethod
-    def init(cls, gamedict):
-        
-        cls.gamedict = gamedict
 
 
 class Destroyable(pygame.sprite.Sprite):

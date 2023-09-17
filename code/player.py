@@ -16,8 +16,6 @@ class Player(Ship):
 
         self.turning_animation_speed = 0.4
 
-        print(self.frame_index)
-
         self.image = self.frames[int(self.frame_index)]
         self.rect = self.image.get_frect(center=pos)
 
