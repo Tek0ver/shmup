@@ -8,6 +8,13 @@ class Player(Ship):
     def __init__(self, all_groups, pos, color, speed, cooldown, *groups) -> None:
         super().__init__(all_groups, pos, color, speed, cooldown, *groups)
 
+        self.max_map_speed = 100
+        self.max_life = 10
+        self.max_shield = 100
+
+        self.life = 3
+        self.shield = 100
+
         self.frames = load_image_folder('../graphic/ship00')['ship00']
         self.idle_frame = len(self.frames) / 2
         self.frame_index = int(self.idle_frame)
@@ -24,7 +31,7 @@ class Player(Ship):
             'down': pygame.K_DOWN,
             'left': pygame.K_LEFT,
             'right': pygame.K_RIGHT,
-            'shoot': pygame.K_SPACE
+            'shoot': pygame.K_SPACE,
             }
 
     def update(self) -> None:

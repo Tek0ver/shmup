@@ -2,12 +2,13 @@ import pygame
 from settings import *
 from mixer import mixer
 from sys import exit
-from level import Level
 
 pygame.init()
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
+
+from level import Level
 
 level = Level()
 

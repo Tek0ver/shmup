@@ -23,6 +23,8 @@ class Level:
             },
         }
 
+        self.progress = 0
+
         self.load_ennemies()
 
         self.load_audio()
@@ -53,8 +55,11 @@ class Level:
         self.groups['player'].update()
         self.groups['ennemies'].update(self.groups['player'].sprite)
 
+        # TODO : do it with delta time
+        self.progress += self.groups['player'].sprite.speed / FPS
+
     def draw(self):
 
         self.groups['player'].draw(pygame.display.get_surface())
         self.groups['ennemies'].draw(pygame.display.get_surface())
-        ui.draw()
+        ui.draw(self.groups['player'].sprite, self.progress)
