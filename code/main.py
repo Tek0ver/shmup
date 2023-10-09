@@ -2,15 +2,14 @@ import pygame
 from settings import *
 from mixer import mixer
 from sys import exit
+from game import Game
 
 pygame.init()
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
-from level import Level
-
-level = Level()
+game = Game()
 
 while True:
 
@@ -27,12 +26,12 @@ while True:
             elif event.key == pygame.K_l:
                 mixer.change_music_volume('up')
 
-            elif event.key == pygame.K_a:
-                level.spawn_ennemy((250,250), 0)
-
     screen.fill('grey')
-    level.run()
-    level.draw()
+
+    game.input()
+    game.update()
+    game.draw()
+    
     pygame.display.flip()
 
     clock.tick(FPS)
