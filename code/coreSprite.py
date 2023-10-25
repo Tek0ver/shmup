@@ -2,6 +2,8 @@ import pygame
 from os import walk
 from os.path import join
 import vfx
+from groupManager import groupManager
+from mixer import mixer
 
 
 class CoreSprite(pygame.sprite.Sprite):
@@ -26,9 +28,9 @@ class CoreSprite(pygame.sprite.Sprite):
 
 class Destroyable(pygame.sprite.Sprite):
 
-    def destroy(self):
+    def kill(self):
 
-        vfx.Explosion(self.rect.center, self.gamedict['groups']['explosions'])
-        self.gamedict['mixer'].play_sound('dead')
-        self.kill()
-        del(self)
+        vfx.Explosion(self.rect.center, groupManager.explosion)
+        # self.gamedict['mixer'].play_sound('dead')
+        super().kill()
+        

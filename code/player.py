@@ -5,8 +5,8 @@ from utility import *
 
 class Player(Ship):
 
-    def __init__(self, all_groups, pos, color, speed, cooldown, *groups) -> None:
-        super().__init__(all_groups, pos, color, speed, cooldown, *groups)
+    def __init__(self, pos, color, speed, cooldown, *groups) -> None:
+        super().__init__(pos, color, speed, cooldown, *groups)
 
         self.max_map_speed = 100
         self.max_life = 10

@@ -1,13 +1,14 @@
 import pygame
 from settings import *
-from mixer import mixer
-from sys import exit
-from game import Game
 
 pygame.init()
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
+
+from mixer import mixer
+from sys import exit
+from game import Game
 
 game = Game()
 
@@ -28,7 +29,7 @@ while True:
 
     screen.fill('grey')
 
-    game.input()
+    # game.input()
     game.update()
     game.draw()
     

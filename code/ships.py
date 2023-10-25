@@ -3,14 +3,13 @@ from timer import Timer
 from projectile import Projectile
 from vfx import Explosion
 from mixer import mixer
+from groupManager import groupManager
 
 
 class Ship(pygame.sprite.Sprite):
 
-    def __init__(self, all_groups, pos, color, speed, cooldown, *groups) -> None:
+    def __init__(self, pos, color, speed, cooldown, *groups) -> None:
         super().__init__(*groups)
-
-        self.all_groups = all_groups
 
         self.image = pygame.surface.Surface((50,50))
         self.image.fill(color)
@@ -26,7 +25,7 @@ class Ship(pygame.sprite.Sprite):
     
     def update(self) -> None:
         
-        self.get_movement(self.all_groups['player'].sprite)
+        self.get_movement(groupManager.player.sprite)
         self.move()
 
     def move(self):
@@ -39,7 +38,7 @@ class Ship(pygame.sprite.Sprite):
         
         if self.timer_shoot.trigger():
             mixer.play_sound('shoot')
-            Projectile(self.rect.center, dir * 1, 10, self.all_groups['projectiles'])
+            Projectile(self.rect.center, dir * 1, 10, groupManager.projectile)
 
     def get_movement(self, target):
 
@@ -48,7 +47,7 @@ class Ship(pygame.sprite.Sprite):
 
     def destroy(self):
 
-        Explosion(self.rect.center, self.all_groups['explosions'])
+        Explosion(self.rect.center, groupManager.explosion)
         mixer.play_sound('dead')
         self.kill()
         del(self)

@@ -1,5 +1,5 @@
 import pygame
-from player import Player
+from groupManager import groupManager
 
 class Ui:
 
@@ -12,8 +12,10 @@ class Ui:
         self.top_offset = 30
         self.bottom_offset = self.screen.get_height() - 30
 
-    def draw(self, player: Player, progress):
-        
+    def draw(self, progress):
+
+        player = groupManager.player.sprites()[0]
+
         life = player.life
         max_life = player.max_life
         shield = player.shield
