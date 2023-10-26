@@ -11,8 +11,9 @@ class Ui:
         self.left_offset = 30
         self.top_offset = 30
         self.bottom_offset = self.screen.get_height() - 30
+        self.font = pygame.font.SysFont(None, 40)
 
-    def draw(self, progress):
+    def draw(self, progress, score):
 
         player = groupManager.player.sprites()[0]
 
@@ -40,6 +41,10 @@ class Ui:
         pygame.draw.line(self.screen, 'blue', (self.left_offset,self.bottom_offset), (self.left_offset,progress_y), 5)
 
         # score
+        img = self.font.render(f"{str(score)} points", True, 'black')
+        self.screen.blit(img,
+                         (self.right_offset - img.get_width(),
+                          self.bottom_offset - img.get_height()))
 
         # speed
 

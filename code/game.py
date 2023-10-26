@@ -40,7 +40,7 @@ class Game:
         groupManager.player.draw(self.screen)
         groupManager.ennemy.draw(self.screen)
         groupManager.explosion.draw(self.screen)
-        ui.draw(50)
+        ui.draw(50, self.score)
 
     def spawn_player(self, pos):
 
