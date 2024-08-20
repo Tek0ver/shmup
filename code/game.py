@@ -1,9 +1,10 @@
 import pygame
-from player import Player
-from mine import Mine
-from groupManager import groupManager
-from vfx import Explosion
-from ui import ui
+from .player import Player
+from .mine import Mine
+from .groupManager import groupManager
+from .vfx import Explosion
+from .ui import ui
+from .mixer import mixer
 
 class Game:
 
@@ -13,8 +14,12 @@ class Game:
 
         self.score = 0
 
-        Mine.load_cache_images("../graphic/mine00")
+        Mine.load_cache_images("graphic/mine00")
         Explosion.load_cache_images()
+
+        mixer.load_music("theme", "audio/music/Juhani Junkala [Retro Game Music Pack] Level 1.wav")
+        mixer.active_music = "theme"
+        mixer.toggle_music()
 
         self.spawn_player((250,400))
 

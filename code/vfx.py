@@ -1,7 +1,7 @@
 import pygame
-from utility import cut_spritesheet
-from coreSprite import CoreSprite
-
+from .utility import cut_spritesheet
+from .coreSprite import CoreSprite
+from pathlib import Path
 
 class Explosion(CoreSprite):
 
@@ -18,7 +18,7 @@ class Explosion(CoreSprite):
 
         print(f"LOADIND {cls.__name__}")
         
-        cls.sprites = cut_spritesheet("../graphic/vfx/explosion/explosionframes.png", (128,128))[:21]
+        cls.sprites = cut_spritesheet(Path("graphic/vfx/explosion/explosionframes.png"), (128,128))[:21]
 
     def update(self):
 

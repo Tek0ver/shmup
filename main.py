@@ -1,14 +1,14 @@
 import pygame
-from settings import *
+from code.settings import *
 
 pygame.init()
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
-from mixer import mixer
+from code.mixer import mixer
 from sys import exit
-from game import Game
+from code.game import Game
 
 game = Game()
 

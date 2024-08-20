@@ -1,9 +1,9 @@
 import pygame
-from timer import Timer
-from projectile import Projectile
-from vfx import Explosion
-from mixer import mixer
-from groupManager import groupManager
+from .timer import Timer
+from .projectile import Projectile
+from .vfx import Explosion
+from .mixer import mixer
+from .groupManager import groupManager
 
 
 class Ship(pygame.sprite.Sprite):
@@ -20,8 +20,8 @@ class Ship(pygame.sprite.Sprite):
 
         self.timer_shoot = Timer(cooldown)
         
-        mixer.load_sound('shoot', '../audio/weapon/laser1.wav')
-        mixer.load_sound('dead', '../audio/explosion/explosion.wav')
+        mixer.load_sound('shoot', 'audio/weapon/laser1.wav')
+        mixer.load_sound('dead', 'audio/explosion/explosion.wav')
     
     def update(self) -> None:
         

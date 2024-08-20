@@ -8,7 +8,7 @@ class Projectile(pygame.sprite.Sprite):
         self.dir = dir
         self.speed = speed
 
-        self.image = pygame.image.load("../graphic/vfx/weapon/laser-00.png").convert_alpha()
+        self.image = pygame.image.load("graphic/vfx/weapon/laser-00.png").convert_alpha()
         self.rect = self.image.get_frect(center=pos)
 
     def update(self):

@@ -1,6 +1,6 @@
 import pygame
-from coreSprite import CoreSprite, Destroyable
-from ai import AI_0
+from .coreSprite import CoreSprite, Destroyable
+from .ai import AI_0
 
 
 class Mine(CoreSprite, Destroyable, AI_0):

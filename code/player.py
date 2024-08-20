@@ -1,6 +1,6 @@
 import pygame
-from ships import Ship
-from utility import *
+from .ships import Ship
+from .utility import *
 
 
 class Player(Ship):
@@ -15,7 +15,7 @@ class Player(Ship):
         self.life = 3
         self.shield = 100
 
-        self.frames = load_image_folder('../graphic/ship00')['ship00']
+        self.frames = load_image_folder('graphic/ship00')['ship00']
         self.idle_frame = len(self.frames) / 2
         self.frame_index = int(self.idle_frame)
 

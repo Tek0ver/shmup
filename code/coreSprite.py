@@ -1,9 +1,9 @@
 import pygame
 from os import walk
 from os.path import join
-import vfx
-from groupManager import groupManager
-from mixer import mixer
+from . import vfx
+from .groupManager import groupManager
+from .mixer import mixer
 
 
 class CoreSprite(pygame.sprite.Sprite):

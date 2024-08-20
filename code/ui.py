@@ -1,5 +1,5 @@
 import pygame
-from groupManager import groupManager
+from .groupManager import groupManager
 
 class Ui:
 
