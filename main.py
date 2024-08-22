@@ -4,13 +4,16 @@ from code.settings import *
 pygame.init()
 
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+
+render_surface = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
+
 clock = pygame.time.Clock()
 
 from code.mixer import mixer
 from sys import exit
 from code.game import Game
 
-game = Game()
+game = Game(render_surface)
 
 while True:
 
@@ -27,12 +30,16 @@ while True:
             elif event.key == pygame.K_l:
                 mixer.change_music_volume('up')
 
-    screen.fill('grey')
+    render_surface.fill('grey')
 
     # game.input()
     game.update()
     game.draw()
-    
+
+    upscaled_surface = pygame.transform.scale(render_surface, (screen.get_width(), screen.get_height()))
+
+    screen.blit(upscaled_surface, (0,0))
+
     pygame.display.flip()
 
     clock.tick(FPS)

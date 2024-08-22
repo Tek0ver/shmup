@@ -3,9 +3,9 @@ from .groupManager import groupManager
 
 class Ui:
 
-    def __init__(self):
+    def __init__(self, render_surface):
 
-        self.screen = pygame.display.get_surface()
+        self.screen = render_surface
 
         self.right_offset = self.screen.get_width() - 30
         self.left_offset = 30
@@ -51,5 +51,3 @@ class Ui:
         # ammo
 
         # energy (laser, boost, shield ?)
-
-ui = Ui()

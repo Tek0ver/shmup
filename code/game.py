@@ -3,14 +3,17 @@ from .player import Player
 from .mine import Mine
 from .groupManager import groupManager
 from .vfx import Explosion
-from .ui import ui
+from .ui import Ui
 from .mixer import mixer
+
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, screen):
 
-        self.screen = pygame.display.get_surface()
+        self.screen = screen
+
+        self.ui = Ui(self.screen)
 
         self.score = 0
 
@@ -45,7 +48,7 @@ class Game:
         groupManager.player.draw(self.screen)
         groupManager.ennemy.draw(self.screen)
         groupManager.explosion.draw(self.screen)
-        ui.draw(50, self.score)
+        self.ui.draw(50, self.score)
 
     def spawn_player(self, pos):
 
